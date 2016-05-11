@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		435DE0D01CE33D9E004D181B /* TJWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DE0CF1CE33D9E004D181B /* TJWindow.swift */; };
 		436D207B1CE1B10E00049F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D207A1CE1B10E00049F88 /* AppDelegate.swift */; };
 		436D207D1CE1B10E00049F88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D207C1CE1B10E00049F88 /* ViewController.swift */; };
 		436D20801CE1B10E00049F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436D207E1CE1B10E00049F88 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		435DE0CF1CE33D9E004D181B /* TJWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJWindow.swift; sourceTree = "<group>"; };
 		436D20771CE1B10D00049F88 /* TJSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TJSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		436D207A1CE1B10E00049F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		436D207C1CE1B10E00049F88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				436D207A1CE1B10E00049F88 /* AppDelegate.swift */,
+				435DE0CF1CE33D9E004D181B /* TJWindow.swift */,
 				436D207C1CE1B10E00049F88 /* ViewController.swift */,
 				436D207E1CE1B10E00049F88 /* Main.storyboard */,
 				436D20811CE1B10E00049F88 /* Assets.xcassets */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				436D207D1CE1B10E00049F88 /* ViewController.swift in Sources */,
+				435DE0D01CE33D9E004D181B /* TJWindow.swift in Sources */,
 				436D207B1CE1B10E00049F88 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +486,7 @@
 				436D20A11CE1B10E00049F88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		436D20A21CE1B10E00049F88 /* Build configuration list for PBXNativeTarget "TJSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				436D20A41CE1B10E00049F88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		436D20A51CE1B10E00049F88 /* Build configuration list for PBXNativeTarget "TJSampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +504,7 @@
 				436D20A71CE1B10E00049F88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

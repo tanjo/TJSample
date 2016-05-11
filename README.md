@@ -40,6 +40,57 @@ curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/master/Swi
 
 ## Swift
 
+### Swift における `__block` だった部分の挙動
+
+Objective-C では何かと利用する Blocks ですが、Swift だと見当たりません.
+Swift では基本的に `__block` の状態になると思っておけばよさそうです.
+リソースの開放については何も考える必要すらなくなりました.
+怖いのは循環参照くらいですね.
+
+今回はやんごとなき理由で UIWindow を使って Alert を表示しようと思います.
+具体的な内容はソースコードを見てください.
+
+```swift
+var window: TJWindow? = TJWindow(frame: UIScreen.mainScreen().bounds)
+window?.hidden = true
+window = nil
+
+// Result ...
+//        deinit
+```
+
+こちらは Blocks とは無縁なコードです.
+正常に deinit が呼ばれているのがわかります.
+次に ブロック構文内で `window` をいじってみます.
+
+```swift
+let window: TJWindow = TJWindow(frame: UIScreen.mainScreen().bounds)
+window.rootViewController = UIViewController()
+window.windowLevel = UIWindowLevelAlert
+window.hidden = false
+if let rootViewController = window.rootViewController {
+    let alert = UIAlertController(
+        title: "タイトル", message: "メッセージ", preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: { (action) in
+        window.hidden = true
+    }))
+    rootViewController.presentViewController(alert, animated: true, completion: nil)
+}
+
+// Result ...
+//        (Touch Down)
+//        deinit
+```
+
+こちらは画面をタップすると開放されました.
+ガベージコレクションでも走ったのでしょうか、いい感じに開放されています.
+Objective-C だと `window = nil` が必要だったりしたかもしれませんが、 Swift では不要です.
+`handler` の参照が消えたからその中身で利用していた `window` も開放されたのでしょう.
+そう思っておきます.
+バイバイ `__block`.
+
+*[2016/05/11] Apple Swift version 2.2 (swiftlang-703.0.18.1 clang-703.0.29)*
+
 ### クラス名の文字列化
 
 Objective-C でクラス名を文字列に変換するのによく利用していたのは `NSStringFromClass` ですが、 Swift だとどうも挙動が怪しい.
